@@ -19,3 +19,7 @@ python to speed up with call C function
                         ctypes.POINTER(ctypes.c_float),
                         ctypes.c_int,
                         ctypes.c_int]`
+
+corresponding to C function input args
+
+`int* NMS(float* bbox, float thresh, float* score, int limit, int len)`
