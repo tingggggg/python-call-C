@@ -51,8 +51,7 @@ def nms(bbox, thresh, score=None, limit=None):
     selec = np.where(selec)[0]
     if score is not None:
         selec = order[selec]
-    print(selec.astype(np.int32).shape)
-    print(selec.astype(np.int32)[:10])
+
     return selec.astype(np.int32)
 
 def nms_c(bbox, thresh, score=None, limit=None):
@@ -76,22 +75,27 @@ def nms_c(bbox, thresh, score=None, limit=None):
 if __name__ == "__main__":
     np.random.seed(5345)
     bbox = np.random.randn(10647, 4).astype("float32")
-    bbox = np.array([
-        [30, 20, 230, 200], 
-        [50, 50, 260, 220],
-        [210, 30, 420, 5],
-        [430, 280, 460, 360]
-    ], dtype="float32")
+    # bbox = np.array([
+    #     [30, 20, 230, 200], 
+    #     [50, 50, 260, 220],
+    #     [210, 30, 420, 5],
+    #     [430, 280, 460, 360]
+    # ], dtype="float32")
     score = np.random.randn(10647, ).astype('float32')
-    score = np.array([0.1, 0.08, 0.8, 0.7], dtype="float32")
+    # score = np.array([0.1, 0.08, 0.8, 0.7], dtype="float32")
+
     thresh = 0.45
-    # py_nms(bbox, score, thresh)
+
     start = time.time()
     nms(bbox, thresh, score=score)
-    print(f'python cost time: {time.time() - start} s')
+    py_time = time.time() - start
+    print(f'python cost time: {py_time} s')
 
     print("\n***** \'C\' ***** \n")
 
     start = time.time()
     nms_c(bbox, thresh, score)
-    print(f"C cost time: {time.time() - start} s")
+    c_time = time.time() - start
+    print(f"C cost time: {c_time} s")
+
+    print(py_time / c_time)

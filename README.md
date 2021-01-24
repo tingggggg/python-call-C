@@ -1,6 +1,9 @@
 # python-call-C
-python to speed up with call C function
+python to speed up with call C function example [Non Maximum Suppression (MNS)]
 
+A Bounding Box array of length 10647 to compare NMS cost time both on python and C function
+
+In this example, C is approximately 12 times faster than python
 
 ## python use setup & Extension to build *.so 
 * build_ext --inplace for build .so to `./`

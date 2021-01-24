@@ -32,10 +32,10 @@ int* NMS(float* bbox, float thresh, float* score, int limit, int len)
     
     BubbleSort(score, bbox, len, order);
 
-    for(i = 0; i < len; i++)
-    {
-        printf("bbox1 %f , %f, %f, %f \n", bbox[i * 4], bbox[i * 4 + 1] , bbox[i * 4 + 2], bbox[i * 4 + 3]);
-    }
+    // for(i = 0; i < len; i++)
+    // {
+    //     printf("bbox1 %f , %f, %f, %f \n", bbox[i * 4], bbox[i * 4 + 1] , bbox[i * 4 + 2], bbox[i * 4 + 3]);
+    // }
 
     // calcu area of each bbox
     float* bbox_area = (float*)malloc(sizeof(float) * len);
