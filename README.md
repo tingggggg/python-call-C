@@ -15,7 +15,7 @@ In this example, C is approximately 12 times faster than python
 
 `clib = ctypes.CDLL("./lib/NMS.so")`
 
-* set input & out type
+* set input type
 
 `clib.NMS.argtypes = [ctypes.POINTER(ctypes.c_float), 
                         ctypes.c_float, 
@@ -28,7 +28,7 @@ corresponding to C function input args
 `int* NMS(float* bbox, float thresh, float* score, int limit,int len)
 `
 
----
+* set output type
 need to set output type if C function not void func()
 
 `from numpy.ctypeslib import ndpointer`
