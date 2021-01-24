@@ -36,6 +36,7 @@ need to set output type if C function not void func()
 `clib.NMS.restype = ndpointer(dtype=ctypes.c_int, shape=(ARRAY_LENGTH, ))`
 
 use numpy library to set output pointer to numpy array
+
 must set static output array shape before call C function
 
 ## call C function from module
