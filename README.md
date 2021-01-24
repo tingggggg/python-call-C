@@ -7,7 +7,7 @@ python to speed up with call C function
 
 `python setup.py build_ext --inplace`
 
-## python use ctypes to load .so and call function form module
+## python use ctypes to load .so and call function from module
 * load module
 
 `clib = ctypes.CDLL("./lib/NMS.so")`
@@ -22,14 +22,37 @@ python to speed up with call C function
 
 corresponding to C function input args
 
-`int* NMS(float* bbox, float thresh, float* score, int limit, int len)
+`int* NMS(float* bbox, float thresh, float* score, int limit,int len)
 `
 
 ---
 need to set output type if C function not void func()
 
 `from numpy.ctypeslib import ndpointer`
+
 `clib.NMS.restype = ndpointer(dtype=ctypes.c_int, shape=(ARRAY_LENGTH, ))`
 
 use numpy library to set output pointer to numpy array
-must  set static output array shape before call C function
+must set static output array shape before call C function
+
+* convert args for c before call C function
+
+convert arg for c follow below steps if your arg is list or array ... type
+
+1. if your array number of dim > 1, flatten it first 
+
+`bbox = bbox.flatten()`
+
+2. convert numpy array to pointer to C
+
+`bbox_ptr = bbox.ctypes.data_as(ctypes.POINTER(ctypes.c_float))`
+
+* call C function
+
+`res = clib.NMS(bbox_ptr, thresh, score_ptr, 0, len(score))`
+
+type of res is numpy array that corresponding to set `restype`
+
+
+
+
