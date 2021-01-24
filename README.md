@@ -7,7 +7,7 @@ python to speed up with call C function
 
 `python setup.py build_ext --inplace`
 
-## python use ctypes to load .so and call function from module
+## python use ctypes to load .so 
 * load module
 
 `clib = ctypes.CDLL("./lib/NMS.so")`
@@ -34,6 +34,8 @@ need to set output type if C function not void func()
 
 use numpy library to set output pointer to numpy array
 must set static output array shape before call C function
+
+## call C function from module
 
 * convert args for c before call C function
 
