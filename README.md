@@ -29,6 +29,7 @@ corresponding to C function input args
 `
 
 * set output type
+
 need to set output type if C function not void func()
 
 `from numpy.ctypeslib import ndpointer`
